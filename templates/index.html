@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Osama's Project & Blog Centre</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        primary: {"50":"#eff6ff","100":"#dbeafe","200":"#bfdbfe","300":"#93c5fd","400":"#60a5fa","500":"#3b82f6","600":"#2563eb","700":"#1d4ed8","800":"#1e40af","900":"#1e3a8a","950":"#172554"}
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        ::-webkit-scrollbar {
+            width: 10px;
+            border-radius: 5px;
+        }
+
+        ::-webkit-scrollbar:horizontal {
+            height: 10px;
+            border-radius: 5px;
+        }
+        
+        /* Track */
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1; 
+        }
+        
+        /* Handle */
+        ::-webkit-scrollbar-thumb {
+            background: #888; 
+        }
+        
+        /* Handle on hover */
+        ::-webkit-scrollbar-thumb:hover {
+            background: #555; 
+        }
+    </style>
+</head>
+<body class="bg-neutral-800 text-white min-h-screen flex flex-col justify-between">
+    <main class="flex-grow flex items-start justify-center py-12">
+        <div class="container mx-auto px-4 max-w-4xl">
+            <header class="text-center mb-12">
+                <h1 class="text-4xl font-bold mb-4">Hi! You found Osama's project & blog centre..</h1>
+                <p class="text-xl text-gray-400">I am a young enthusiast in the programming field, specializing in sectors including not limited to: Data Analysis/Extraction, APIs, and Web Development..</p>
+            </header>
+            <div class="mb-12 grid grid-cols-1 sm:grid-cols-2 gap-3">
+                <section>
+                    <h2 class="text-2xl font-semibold mb-4">My TOP Skills</h2>
+                    <div class="min-h-24 bg-neutral-700 p-4 rounded-lg shadow-lg">
+                        <div class="flex flex-wrap gap-2">
+                            <span class="px-3 py-1 bg-yellow-600 text-white rounded-full text-sm">Software Design</span>
+                            <span class="px-3 py-1 bg-[#366c9a] text-white rounded-full text-sm">Python</span>
+                            <span class="px-3 py-1 bg-[#cfbc42] text-white rounded-full text-sm">JavaScript</span>
+                            <span class="px-3 py-1 bg-teal-700 text-white rounded-full text-sm">Linux</span>
+                            <span class="px-3 py-1 bg-green-600 text-white rounded-full text-sm">Django</span>
+                            <span class="px-3 py-1 bg-[#777BB3] text-white rounded-full text-sm">PHP</span>
+                            <span class="px-3 py-1 bg-[#ff5733] text-white rounded-full text-sm">SQL</span>
+                            <span class="px-3 py-1 bg-violet-500 text-white rounded-full text-sm">Flask</span>
+                        </div>
+                    </div>
+                </section>
+                <section>
+                    <h2 class="text-2xl font-semibold mb-4">My Socials</h2>
+                    <div class="bg-neutral-700 p-4 rounded-lg shadow-lg">
+                        <div class="flex flex-wrap gap-2">
+                            <a href="https://snapchat.com/t/BxVDvcWQ" class="w-12 h-12 bg-neutral-600 rounded-lg flex items-center justify-center hover:bg-neutral-500 transition-hover duration-200">
+                                <img src="https://img.icons8.com/ios-filled/50/ffffff/snapchat.png" alt="Snapchat" class="w-6 h-6">
+                            </a>
+                            <a href="https://github.com/osam7a" class="w-12 h-12 bg-neutral-600 rounded-lg flex items-center justify-center hover:bg-neutral-500 transition-hover duration-200">
+                                <img src="https://img.icons8.com/ios-filled/50/ffffff/github.png" alt="GitHub" class="w-6 h-6">
+                            </a>
+                            <a href="https://instagram.com/osam7a__" class="w-12 h-12 bg-neutral-600 rounded-lg flex items-center justify-center hover:bg-neutral-500 transition-hover duration-200">
+                                <img src="https://img.icons8.com/ios-filled/50/ffffff/instagram-new.png" alt="Instagram" class="w-6 h-6">
+                            </a>
+                            <a href="https://www.linkedin.com/in/osama-alhinawi-8272b6194/" class="w-12 h-12 bg-neutral-600 rounded-lg flex items-center justify-center hover:bg-neutral-500 transition-hover duration-200">
+                                <img src="https://img.icons8.com/ios-filled/50/ffffff/linkedin.png" alt="LinkedIn" class="w-6 h-6">
+                            </a>
+                        </div>
+                    </div>
+                </section>
+            </div>
+            <section class="mb-12">
+                <h2 class="text-2xl font-semibold mb-4">Latest Projects</h2>
+                <div class="overflow-x-auto pb-4">
+                    <div class="inline-flex gap-4">
+                        {% for project in projects %}
+                        <div class="flex flex-col bg-neutral-700 p-6 rounded-lg shadow-lg w-80">
+                            <img src="{{ project.image }}" alt="AI Chatbot" class="w-full h-36 object-cover rounded-md mb-4">
+                            <h3 class="text-xl font-semibold mb-2">{{ project.name }}</h3>
+                            <p class="text-gray-300 break-words mb-4">{{ project.description|default:"No Description" }}</p>
+                            <div class="flex mt-auto gap-2">
+                                {% if project.preview %}<a target="_blank" href="{{ project.preview }}" class="px-2 py-1 grow text-center bg-blue-500 text-white font-medium rounded hover:bg-blue-500/90">Preview</a>{% endif %}
+                                {% if project.source %}<a target="_blank" href="{{ project.source }}" class="px-2 py-1 grow text-center bg-white text-black font-medium rounded hover:bg-white/90">Source Code</a>{% endif %}
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </section>
+            <section>
+                <h2 class="text-2xl font-semibold mb-4">Latest Blogs</h2>
+                <div class="overflow-x-auto pb-4">
+                    <div class="inline-flex gap-4">
+                        {% for blog in blogs %}
+                        <div class="bg-neutral-700 p-6 rounded-lg shadow-lg w-80">
+                            <img src="https://placehold.co/600x400" alt="AI Future" class="w-full h-36 object-cover rounded-md mb-4">
+                            <h3 class="text-xl font-semibold mb-2">{{ blog.headline }}</h3>
+                            <p class="text-gray-300 break-words">{{ blog.description}}</p>
+                            <a href="{{ blog.link }}" class="text-lg text-blue-500 font-medium mt-2 inline-block">Read more</a>
+                        </div>
+                        {% endfor %}
+                        {% if not blogs %}
+                        <p class="text-gray-300 break-words">No blogs yet! Stay tuned..</p>
+                        {% endif %}
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+    <footer class="bg-neutral-700 py-4 px-3 text-center w-full max-w-4xl mx-auto">
+        <p class="text-sm text-gray-400">&copy; 2024 Osama's Project & Blog Centre. All rights reserved.</p>
+    </footer>
+</body>
+</html>
