@@ -29,7 +29,7 @@ SECRET_KEY = environ['DJANGO_KEY']
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["192.168.0.143", "localhost"]
+ALLOWED_HOSTS = ["192.168.0.143", "localhost", "alhennawi.tech"]
 
 
 # Application definition
